@@ -1,4 +1,4 @@
-import { ReturnBook } from './ReturnBook';
+import { ReturnBook } from "./ReturnBook";
 
 export const Carousel = () => {
     return (
@@ -13,10 +13,9 @@ export const Carousel = () => {
                 <div className='carousel-inner'>
                     <div className='carousel-item active'>
                         <div className='row d-flex justify-content-center align-items-center'>
-                            <ReturnBook/>
-                            <ReturnBook/>
-                            <ReturnBook/>
-                            
+                           <ReturnBook/>
+                           <ReturnBook/>
+                           <ReturnBook/>
                         </div>
                     </div>
                     <div className='carousel-item'>
@@ -32,7 +31,7 @@ export const Carousel = () => {
                         <ReturnBook/>
                         <ReturnBook/>
 
-                     </div>
+                        </div>
                     </div>
                     <button className='carousel-control-prev' type='button'
                         data-bs-target='#carouselExampleControls' data-bs-slide='prev'>
@@ -50,7 +49,9 @@ export const Carousel = () => {
             {/* Mobile */}
             <div className='d-lg-none mt-3'>
                 <div className='row d-flex justify-content-center align-items-center'>
-                    <ReturnBook/>
+                <ReturnBook/>
+                <ReturnBook/>
+                <ReturnBook/>
                 </div>
             </div>
             <div className='homepage-carousel-title mt-3'>
