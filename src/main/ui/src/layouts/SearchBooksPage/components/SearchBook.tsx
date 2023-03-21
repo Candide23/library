@@ -1,4 +1,9 @@
+import { Link } from "react-router-dom";
 import BookModel from "../../../models/BookModel"
+
+/*The SearchBook component is a React functional component that displays details of a book passed as a prop. 
+The component returns a div element with a class card, which contains the book's details such as author,
+ title, and description. */
 
 export const SearchBook: React.FC<{ book: BookModel }> = (props) => {
     return (
@@ -51,9 +56,9 @@ export const SearchBook: React.FC<{ book: BookModel }> = (props) => {
                     </div>
                 </div>
                 <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                    <a className='btn btn-md main-color text-white' href='#'>
+                    <Link className='btn btn-md main-color text-white' to={`/checkout/${props.book.id}`}>
                         View Details
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
