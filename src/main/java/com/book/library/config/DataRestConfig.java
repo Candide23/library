@@ -1,6 +1,7 @@
-package com.book.library;
+package com.book.library.config;
 
 import com.book.library.Model.Book;
+import com.book.library.Model.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -19,7 +20,7 @@ configuring CORS mapping to allow requests from a specified origin.The
 @Configuration
 public class DataRestConfig implements RepositoryRestConfigurer {
 
-    private String allowedOrigins = "htpp://localhost:3000";
+    private String theAllowedOrigins = "http://localhost:3000";
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config,
@@ -31,16 +32,16 @@ public class DataRestConfig implements RepositoryRestConfigurer {
                 HttpMethod.PUT};
 
         config.exposeIdsFor(Book.class);
-        //config.exposeIdsFor(Review.class);
+        config.exposeIdsFor(Review.class);
         //config.exposeIdsFor(Message.class);
 
         disableHttpMethods(Book.class, config, theUnsupportedActions);
-        //disableHttpMethods(Review.class, config, theUnsupportedActions);
+        disableHttpMethods(Review.class, config, theUnsupportedActions);
         //disableHttpMethods(Message.class, config, theUnsupportedActions);
 
         /* Configure CORS Mapping */
         cors.addMapping(config.getBasePath() + "/**")
-                .allowedOrigins(allowedOrigins);
+                .allowedOrigins(theAllowedOrigins);
     }
 
     private void disableHttpMethods(Class theClass,

@@ -3,6 +3,7 @@ package com.book.library.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Generated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
 @Table(name ="book")
