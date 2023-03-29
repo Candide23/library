@@ -2,6 +2,7 @@ package com.book.library.config;
 
 import com.book.library.Model.Book;
 import com.book.library.Model.Review;
+import com.nimbusds.oauth2.sdk.Message;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;

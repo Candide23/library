@@ -14,8 +14,9 @@ public class BookController {
     private BookService bookService;
 
 
+
     @GetMapping("/secure/currentloans/count")
-    public int currentLoansCount() {
+    public int currentLoansCount(@RequestHeader(value = "Authorization") String token ) {
 
         String userEmail = "testuser@email.com";
         return bookService.currentLoansCount(userEmail);
@@ -23,7 +24,8 @@ public class BookController {
     }
 
     @PutMapping("/secure/checkout")
-    public Book checkoutBook(@RequestParam Long bookId) throws Exception {
+    public Book checkoutBook(@RequestHeader(value = "Authorization") String token,
+                             @RequestParam Long bookId) throws Exception {
 
         String userEmail = "testuser@email.com";
         return bookService.checkoutBook(userEmail, bookId);
