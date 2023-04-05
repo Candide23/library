@@ -1,15 +1,19 @@
 package com.book.library.Service;
 
+import com.book.library.Model.Checkout;
 import com.book.library.Model.Review;
 import com.book.library.Repository.BookRepository;
+import com.book.library.Repository.CheckoutRepository;
 import com.book.library.Repository.ReviewRepository;
 import com.book.library.RequestModels.ReviewRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.sql.Date;
 import java.time.LocalDate;
+
 
 @Service
 @Transactional
@@ -20,6 +24,8 @@ public class ReviewService {
 
     @Autowired
     private BookRepository bookRepository;
+
+
 
 
     /*The function creates and saves a new book review in a repository.
@@ -54,6 +60,8 @@ public class ReviewService {
             return false;
         }
     }
+
+
 
 
 }

@@ -10,7 +10,9 @@ import {OktaAuth, toRelativeUrl} from '@okta/okta-auth-js'
 import { oktaConfig } from './lib/oktaConfig';
 
 import LoginWidget from './Auth/LoginWidget';
-import { LoginCallback, Security } from '@okta/okta-react';
+import { LoginCallback, SecureRoute, Security } from '@okta/okta-react';
+import { ReviewListPage } from './layouts/BookCheckoutPage/ReviewListPage/ReviewListPage';
+import { ShelfPage } from './layouts/ShelfPage/ShelfPage';
 
 const oktaAuth = new OktaAuth(oktaConfig);
 
@@ -51,6 +53,9 @@ programmatic navigation in a React application. */
         <Route path='/search'>
           <SearchBooksPage />
         </Route>
+        <Route path='/reviewlist/:bookId'>
+          <ReviewListPage/>
+        </Route>
         <Route path='/checkout/:bookId'>
           <BookCheckoutPage/>
         </Route>
@@ -59,6 +64,7 @@ programmatic navigation in a React application. */
             } 
           />
           <Route path='/login/callback' component={LoginCallback} />
+          <SecureRoute path='/shelf'> <ShelfPage/> </SecureRoute>
       </Switch>
       </div>
 
