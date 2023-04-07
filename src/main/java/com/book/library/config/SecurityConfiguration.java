@@ -20,7 +20,8 @@ public class SecurityConfiguration {
         // Protect endpoints at /api/<type>/secure
         http.authorizeRequests()
                 .antMatchers("/api/books/secure/**",
-                        "/api/reviews/secure/**"
+                        "/api/reviews/secure/**",
+                        "/api/messages/secure/**"
                         )
                 .authenticated()
                 .and()

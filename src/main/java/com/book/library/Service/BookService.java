@@ -2,8 +2,10 @@ package com.book.library.Service;
 
 import com.book.library.Model.Book;
 import com.book.library.Model.Checkout;
+import com.book.library.Model.History;
 import com.book.library.Repository.BookRepository;
 import com.book.library.Repository.CheckoutRepository;
+import com.book.library.Repository.HistoryRepository;
 import com.book.library.ResponseModels.ShelfCurrentLoansResponse;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +25,13 @@ public class BookService {
     private BookRepository bookRepository;
     private CheckoutRepository checkoutRepository;
 
+    private HistoryRepository historyRepository;
 
-    public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository) {
+
+    public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository, HistoryRepository historyRepository) {
         this.bookRepository = bookRepository;
         this.checkoutRepository = checkoutRepository;
+        this.historyRepository =  historyRepository;
     }
     /*This function  takes a user email and book ID as input and returns a Book object.
      It first checks if the book exists in the repository and if it is available
@@ -122,6 +127,18 @@ public class BookService {
 
         bookRepository.save(book.get());
         checkoutRepository.deleteById(validateCheckout.getId());
+
+        History history = new History(
+                userEmail,
+                validateCheckout.getCheckoutDate(),
+                LocalDate.now().toString(),
+                book.get().getTitle(),
+                book.get().getAuthor(),
+                book.get().getDescription(),
+                book.get().getImg()
+        );
+
+        historyRepository.save(history);
 
 
     }
