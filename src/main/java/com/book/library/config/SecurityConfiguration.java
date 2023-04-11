@@ -21,7 +21,8 @@ public class SecurityConfiguration {
         http.authorizeRequests()
                 .antMatchers("/api/books/secure/**",
                         "/api/reviews/secure/**",
-                        "/api/messages/secure/**"
+                        "/api/messages/secure/**",
+                        "/api/admin/secure/**"
                         )
                 .authenticated()
                 .and()
