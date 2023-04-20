@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Data
 public class Message {
 
+
+
     public Message() {
     }
 

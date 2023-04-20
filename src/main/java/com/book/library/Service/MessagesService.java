@@ -14,8 +14,12 @@ import java.util.Optional;
 @Transactional
 public class MessagesService {
 
-    @Autowired
     private MessageRepository messageRepository;
+
+    @Autowired
+    public MessagesService(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
 
     public void postMessage(Message messageRequest, String userEmail) {
         Message message = new Message(messageRequest.getTitle(), messageRequest.getQuestion());

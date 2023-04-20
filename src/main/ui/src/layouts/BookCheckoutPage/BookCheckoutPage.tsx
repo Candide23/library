@@ -31,6 +31,9 @@ export const BookCheckoutPage = () => {
     // Is Book Check Out?
     const [isCheckedOut, setIsCheckedOut] = useState(false);
     const [isLoadingBookCheckedOut, setIsLoadingBookCheckedOut] = useState(true);
+    
+
+  
 
     const bookId = (window.location.pathname).split('/')[2];
 
@@ -216,6 +219,7 @@ export const BookCheckoutPage = () => {
         };
         const checkoutResponse = await fetch(url, requestOptions);
         if (!checkoutResponse.ok) {
+
             throw new Error('Something went wrong!');
         }
         setIsCheckedOut(true);
@@ -247,12 +251,13 @@ export const BookCheckoutPage = () => {
     return (
         <div>
             <div className='container d-none d-lg-block'>
+ 
                 <div className='row mt-5'>
                     <div className='col-sm-2 col-md-2'>
                         {book?.img ?
                             <img src={book?.img} width='226' height='349' alt='Book' />
                             :
-                            <img src={require('./../../Images/BooksImages/book-luv2code-1000.png')} width='226'
+                            <img src={require('./../../Images/BooksImages/book-1000.png')} width='226'
                                 height='349' alt='Book' />
                         }
                     </div>
@@ -276,7 +281,7 @@ export const BookCheckoutPage = () => {
                     {book?.img ?
                         <img src={book?.img} width='226' height='349' alt='Book' />
                         :
-                        <img src={require('./../../Images/BooksImages/book-luv2code-1000.png')} width='226'
+                        <img src={require('./../../Images/BooksImages/book-1000.png')} width='226'
                             height='349' alt='Book' />
                     }
                 </div>

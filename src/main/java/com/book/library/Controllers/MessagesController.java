@@ -2,25 +2,24 @@ package com.book.library.Controllers;
 
 
 import com.book.library.Model.Message;
-import com.book.library.Repository.MessageRepository;
 import com.book.library.RequestModels.AdminQuestionRequest;
 import com.book.library.Service.MessagesService;
 import com.book.library.Utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/api/messages")
-public class MessageController {
+public class MessagesController {
 
-    @Autowired
+
     private MessagesService messagesService;
 
     @Autowired
-    private MessageRepository messageRepository;
+    public MessagesController(MessagesService messagesService) {
+        this.messagesService = messagesService;
+    }
 
 
 
@@ -32,15 +31,14 @@ public class MessageController {
     }
 
 
-    public void putMessage(AdminQuestionRequest adminQuestionRequest, String userEmail) throws Exception {
-        Optional<Message> message = messageRepository.findById(adminQuestionRequest.getId());
-        if (!message.isPresent()) {
-            throw new Exception("Message not found");
+    @PutMapping("/secure/admin/message")
+    public void putMessage(@RequestHeader(value="Authorization") String token,
+                           @RequestBody AdminQuestionRequest adminQuestionRequest) throws Exception {
+        String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+        String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
+        if (admin == null || !admin.equals("admin")) {
+            throw new Exception("Administration page only.");
         }
-
-        message.get().setAdminEmail(userEmail);
-        message.get().setResponse(adminQuestionRequest.getResponse());
-        message.get().setClosed(true);
-        messageRepository.save(message.get());
+        messagesService.putMessage(adminQuestionRequest, userEmail);
     }
 }

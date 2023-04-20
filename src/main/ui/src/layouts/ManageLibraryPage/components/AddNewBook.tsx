@@ -108,10 +108,10 @@ export const AddNewBook = () => {
                                         {category}
                                 </button>
                                 <ul id='addNewBookId' className='dropdown-menu' aria-labelledby='dropdownMenuButton1'>
-                                    <li><a onClick={() => categoryField('FE')} className='dropdown-item'>Front End</a></li>
-                                    <li><a onClick={() => categoryField('BE')} className='dropdown-item'>Back End</a></li>
-                                    <li><a onClick={() => categoryField('Data')} className='dropdown-item'>Data</a></li>
-                                    <li><a onClick={() => categoryField('DevOps')} className='dropdown-item'>DevOps</a></li>
+                                    <li><a onClick={() => categoryField('CS')} className='dropdown-item'>Computer Science</a></li>
+                                    <li><a onClick={() => categoryField('FI')} className='dropdown-item'>Fiction</a></li>
+                                    <li><a onClick={() => categoryField('HI')} className='dropdown-item'>History</a></li>
+                                    <li><a onClick={() => categoryField('SC')} className='dropdown-item'>Science</a></li>
                                 </ul>
                             </div>
                         </div>

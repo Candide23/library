@@ -98,10 +98,10 @@ export const SearchBooksPage = () => {
     const categoryField = (value: string) => {
         setCurrentPage(1);
         if (
-            value.toLowerCase() === 'fe' || 
-            value.toLowerCase() === 'be' || 
-            value.toLowerCase() === 'data' || 
-            value.toLowerCase() === 'devops'
+            value.toLowerCase() === 'cs' || 
+            value.toLowerCase() === 'fi' || 
+            value.toLowerCase() === 'hi' || 
+            value.toLowerCase() === 'sc'
         ) {
             setCategorySelection(value);
             setSearchUrl(`/search/findByCategory?category=${value}&page=<pageNumber>>&size=${booksPerPage}`)
@@ -148,24 +148,25 @@ export const SearchBooksPage = () => {
                                             All
                                         </a>
                                     </li>
-                                    <li onClick={() => categoryField('FE')}>
+                                    <li onClick={() => categoryField('CS')}>
                                         <a className='dropdown-item' href='#'>
-                                            Front End
+                                            Computer Science
                                         </a>
                                     </li>
-                                    <li onClick={() => categoryField('BE')}>
+                                    <li onClick={() => categoryField('FI')}>
                                         <a className='dropdown-item' href='#'>
-                                            Back End
+                                        Fiction
+                                            
                                         </a>
                                     </li>
-                                    <li onClick={() => categoryField('Data')}>
+                                    <li onClick={() => categoryField('HI')}>
                                         <a className='dropdown-item' href='#'>
-                                            Data
+                                        History
                                         </a>
                                     </li>
-                                    <li onClick={() => categoryField('DevOps')}>
+                                    <li onClick={() => categoryField('SC')}>
                                         <a className='dropdown-item' href='#'>
-                                            DevOps
+                                            Science
                                         </a>
                                     </li>
                                 </ul>

@@ -7,6 +7,7 @@ import com.book.library.Repository.BookRepository;
 import com.book.library.Repository.CheckoutRepository;
 import com.book.library.Repository.HistoryRepository;
 import com.book.library.ResponseModels.ShelfCurrentLoansResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -26,6 +27,7 @@ public class BookService {
     private CheckoutRepository checkoutRepository;
 
     private HistoryRepository historyRepository;
+
 
 
     public BookService(BookRepository bookRepository, CheckoutRepository checkoutRepository, HistoryRepository historyRepository) {
@@ -48,6 +50,31 @@ public class BookService {
         if (!book.isPresent() || validateCheckout != null || book.get().getCopiesAvailable() <= 0) {
             throw new Exception("Book doesn't exist or already checked out by user");
         }
+
+        List<Checkout> currentBooksCheckedOut = checkoutRepository.findBooksByUserEmail(userEmail);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        boolean bookNeedsReturned = false;
+
+        for(Checkout checkout: currentBooksCheckedOut){
+
+            Date d1 = sdf.parse(checkout.getReturnDate());
+            Date d2 = sdf.parse(LocalDate.now().toString());
+
+            TimeUnit time = TimeUnit.DAYS;
+
+            double differenceInTime = time.convert(d1.getTime() - d2.getTime(), TimeUnit.MILLISECONDS);
+
+            if(differenceInTime < 0){
+
+                bookNeedsReturned = true;
+                break;
+            }
+        }
+
+
+
 
         book.get().setCopiesAvailable(book.get().getCopiesAvailable()-1);
         bookRepository.save(book.get());
