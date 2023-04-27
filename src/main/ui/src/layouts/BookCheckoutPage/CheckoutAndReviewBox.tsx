@@ -6,6 +6,9 @@ export const CheckoutAndReviewBox: React.FC<{ book: BookModel | undefined, mobil
     currentLoansCount: number, isAuthenticated: any, isCheckedOut: boolean, 
     checkoutBook: any, isReviewLeft: boolean, submitReview: any }> = (props) => {
 
+ /**The buttonRender function renders the appropriate button or message depending on the user's 
+  * authentication status and the status of the book (checked out, available, or on waitlist).*/       
+
     function buttonRender() {
         if (props.isAuthenticated) {
             if (!props.isCheckedOut && props.currentLoansCount < 5) {
@@ -18,6 +21,8 @@ export const CheckoutAndReviewBox: React.FC<{ book: BookModel | undefined, mobil
         }
         return (<Link to={'/login'} className='btn btn-success btn-lg'>Sign in</Link>)
     }
+    /**The reviewRender function renders a message or a review submission form depending 
+     * on whether the user is authenticated and has already left a review or not. */
 
     function reviewRender() {
         if (props.isAuthenticated && !props.isReviewLeft) {

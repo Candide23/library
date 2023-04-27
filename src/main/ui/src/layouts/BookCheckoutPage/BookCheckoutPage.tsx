@@ -37,6 +37,14 @@ export const BookCheckoutPage = () => {
 
     const bookId = (window.location.pathname).split('/')[2];
 
+/**This code is using the useEffect hook to fetch book data from an API.
+ *It first sets the base URL and uses the fetch function to make a request to that URL,
+ handling any errors with a thrown error message. Once the response is received, 
+ it is converted to a JSON object and stored in a BookModel object. 
+ The setBook function is then used to update the state with the fetched book data and 
+ setIsLoading is set to false. The fetchBook function is called and any errors caught 
+ are handled by setting isLoading to false and setting an httpError state. 
+ The useEffect hook is triggered whenever the isCheckedOut state changes. */
     useEffect(() => {
         const fetchBook = async () => {
             const baseUrl: string = `http://localhost:8080/api/books/${bookId}`;
@@ -68,6 +76,13 @@ export const BookCheckoutPage = () => {
             setHttpError(error.message);
         })
     }, [isCheckedOut]);
+
+    /*The code is an implementation of the useEffect hook that fetches reviews for a book from a backend API
+    when the "isReviewLeft" state changes. It defines an async function that makes an API call to fetch the
+    reviews using the book ID, handles the response and extracts the review data from the JSON response, 
+    calculates the average rating of the book and sets the "totalStars" and "reviews" state variables with 
+    the appropriate values. If an error occurs, it sets the "isLoadingReview" and "httpError" state variables
+     accordingly. The hook is dependent on the "isReviewLeft" state variable.*/
 
     useEffect(() => {
         const fetchBookReviews = async () => {

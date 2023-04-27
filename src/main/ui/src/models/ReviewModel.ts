@@ -1,3 +1,6 @@
+/**This class is likely used to represent review data retrieved from a REST API in a React application. */
+
+
 class ReviewModel {
     id: number;
     userEmail: string;

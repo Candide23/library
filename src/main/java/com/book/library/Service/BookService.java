@@ -101,10 +101,24 @@ public class BookService {
         }
     }
 
+
+    /*The method, "currentLoansCount," takes a user email as input
+     and returns an integer representing the number of books currently checked out by that user.
+     This is done by querying the "checkoutRepository" to retrieve a list of checkouts associated
+      with the provided user email, and then returning the size of that list.*/
     public int currentLoansCount(String userEmail) {
         return checkoutRepository.findBooksByUserEmail(userEmail).size();
     }
 
+    /* This method, "currentLoans,"  takes a user email as input
+    and returns a list of "ShelfCurrentLoansResponse" objects, which represent
+    the books that are currently checked out by the user and their respective due dates.
+    This is done by querying the "checkoutRepository" to retrieve a list of checkouts associated
+    with the provided user email, then extracting the book IDs from those checkouts and using them
+    to query the "bookRepository" to retrieve the corresponding books. For each book,
+    the due date is calculated by subtracting the checkout date from the current date
+    and converting the difference to days. A new "ShelfCurrentLoansResponse" object is created
+    for each book and added to the list of responses, which is ultimately returned.*/
     public List<ShelfCurrentLoansResponse> currentLoans(String userEmail) throws Exception {
 
         List<ShelfCurrentLoansResponse> shelfCurrentLoansResponses = new ArrayList<>();

@@ -18,6 +18,16 @@ export const Messages = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
+    /*This code uses the useEffect hook in React to fetch user messages from a REST API
+    endpoint when the authState or currentPage props change. The function fetchUserMessages 
+    is defined with an asynchronous function that sends an HTTP GET request to the server to 
+    retrieve messages for the authenticated user, using their email as a parameter in the URL. 
+    If the request is successful, the messages are extracted from the response and set in the
+    component's state variables (setMessages and setTotalPages). If there is an error, 
+    an error message is thrown and caught by the catch block which sets the state variables
+    setIsLoadingMessages and setHttpError accordingly.Finally, the window.scrollTo method is 
+    called to scroll to the top of the page.*/
+
     useEffect(() => {
         const fetchUserMessages = async () => {
             if (authState && authState?.isAuthenticated) {

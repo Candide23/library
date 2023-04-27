@@ -11,6 +11,10 @@ import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 @Configuration
 public class SecurityConfiguration {
 
+    /*The function is a security filter chain used to configure the security for REST API endpoints.
+     It disables CSRF protection, allows only authenticated users to access specific endpoints,
+     configures OAuth 2.0 Resource Server support using JWTs, adds CORS filters, sets up a content
+     negotiation strategy, and customizes the response for 401 unauthorized errors.*/
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 

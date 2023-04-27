@@ -22,6 +22,12 @@ export const ReviewListPage = () =>{
 
     const bookId = (window.location.pathname).split('/')[2];
 
+    /*This code is written in React and uses the useEffect hook to fetch book review data from a server API endpoint.
+    The fetchBookReviewsData function performs an HTTP GET request to the API endpoint and loads the reviews data into
+    the component's state. The useEffect hook is called with the fetchBookReviewsData function and a dependency array 
+    containing the currentPage variable, which means the effect will be executed every time the currentPage variable changes.
+    If an error occurs during the fetch request, the catch block sets the loading state to false and sets the httpError state 
+    to the error message.*/
     useEffect(() => {
         const fetchBookReviewsData = async () => {
 
