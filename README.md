@@ -4,7 +4,6 @@ The app is a full-stack web application that allows users to browse and check ou
 
 # Technologies Used
 
-
 Javascript
 
 Java
