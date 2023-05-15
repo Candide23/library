@@ -40,7 +40,8 @@ export const AddNewBook = () => {
     }
 
     async function submitNewBook() {
-        const url = `http://localhost:8080/api/admin/secure/add/book`;
+        //const url = `http://localhost:8080/api/admin/secure/add/book`;
+        const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/admin/secure/add/book`;
         if (authState?.isAuthenticated && title !== '' && author !== '' && category !== 'Category' 
             && description !== '' && copies >= 0) {
                 const book: AddBookRequest = new AddBookRequest(title, author, description, copies, category);

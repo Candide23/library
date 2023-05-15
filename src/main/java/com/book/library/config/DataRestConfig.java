@@ -3,11 +3,13 @@ package com.book.library.config;
 import com.book.library.Model.Book;
 import com.book.library.Model.Review;
 import com.nimbusds.oauth2.sdk.Message;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /*This code defines a Spring configuration class named "DataRestConfig" that implements
 the "RepositoryRestConfigurer" interface. It overridesthe "configureRepositoryRestConfiguration"
@@ -21,7 +23,7 @@ configuring CORS mapping to allow requests from a specified origin.The
 @Configuration
 public class DataRestConfig implements RepositoryRestConfigurer {
 
-    private String theAllowedOrigins = "http://localhost:3000";
+    private String theAllowedOrigins = "http://librarymk.s3-website.us-east-2.amazonaws.com";
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config,
@@ -55,4 +57,18 @@ public class DataRestConfig implements RepositoryRestConfigurer {
                 .withCollectionExposure((metdata, httpMethods) ->
                         httpMethods.disable(theUnsupportedActions));
     }
+
+    /*@Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://librarymk.s3-website.us-east-2.amazonaws.com")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowCredentials(false)
+                        .maxAge(3600);
+            }
+        };
+    }*/
 }

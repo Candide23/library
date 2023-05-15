@@ -19,7 +19,8 @@ export const ChangeQuantityOfBooks = () => {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            const baseUrl: string = `http://localhost:8080/api/books?page=${currentPage - 1}&size=${booksPerPage}`;
+            //const baseUrl: string = `http://localhost:8080/api/books?page=${currentPage - 1}&size=${booksPerPage}`;
+            const baseUrl: string = `http://librarymbk.us-east-2.elasticbeanstalk.com/api/books?page=${currentPage - 1}&size=${booksPerPage}`;
 
             const response = await fetch(baseUrl);
 
