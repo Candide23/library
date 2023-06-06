@@ -6,7 +6,7 @@ import com.book.library.Utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://librarymk.s3-website.us-east-2.amazonaws.com")
+@CrossOrigin("http://librarymk.s3-website.us-east-2.amazonaws.com")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {

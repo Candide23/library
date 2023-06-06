@@ -117,7 +117,8 @@ export const Carousel = () => {
             {/* Mobile */}
             <div className='d-lg-none mt-3'>
                 <div className='row d-flex justify-content-center align-items-center'>
-                            <ReturnBook  book={books[6]} key ={books[6].id}/>
+                            {books.length > 6 && <ReturnBook book={books[6]} key={books[6].id} />}
+
                            
                 </div>
             </div>

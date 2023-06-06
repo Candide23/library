@@ -58,17 +58,5 @@ public class DataRestConfig implements RepositoryRestConfigurer {
                         httpMethods.disable(theUnsupportedActions));
     }
 
-    /*@Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://librarymk.s3-website.us-east-2.amazonaws.com")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowCredentials(false)
-                        .maxAge(3600);
-            }
-        };
-    }*/
+
 }
