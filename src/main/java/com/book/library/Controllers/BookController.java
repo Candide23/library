@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://librarymk.s3-website.us-east-2.amazonaws.com")
+//@CrossOrigin("http://librarymk.s3-website.us-east-2.amazonaws.com")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/api/books")
 public class BookController {

@@ -47,8 +47,8 @@ export const BookCheckoutPage = () => {
  The useEffect hook is triggered whenever the isCheckedOut state changes. */
     useEffect(() => {
         const fetchBook = async () => {
-            //const baseUrl: string = `http://localhost:8080/api/books/${bookId}`;
-            const baseUrl: string = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/${bookId}`;
+            const baseUrl: string = `http://localhost:8080/api/books/${bookId}`;
+            //const baseUrl: string = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/${bookId}`;
 
             const response = await fetch(baseUrl);
 
@@ -87,8 +87,8 @@ export const BookCheckoutPage = () => {
 
     useEffect(() => {
         const fetchBookReviews = async () => {
-            //const reviewUrl: string = `http://localhost:8080/api/reviews/search/findByBookId?bookId=${bookId}`;
-            const reviewUrl: string = `http://librarymk.us-east-2.elasticbeanstalk.com/api/reviews/search/findByBookId?bookId=${bookId}`;
+            const reviewUrl: string = `http://localhost:8080/api/reviews/search/findByBookId?bookId=${bookId}`;
+            //const reviewUrl: string = `http://librarymk.us-east-2.elasticbeanstalk.com/api/reviews/search/findByBookId?bookId=${bookId}`;
 
             const responseReviews = await fetch(reviewUrl);
 
@@ -134,8 +134,8 @@ export const BookCheckoutPage = () => {
     useEffect(() => {
         const fetchUserReviewBook = async () => {
             if (authState && authState.isAuthenticated) {
-                //const url = `http://localhost:8080/api/reviews/secure/user/book/?bookId=${bookId}`;
-                const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/reviews/secure/user/book/?bookId=${bookId}`;
+                const url = `http://localhost:8080/api/reviews/secure/user/book/?bookId=${bookId}`;
+                //const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/reviews/secure/user/book/?bookId=${bookId}`;
                 const requestOptions = {
                     method: 'GET',
                     headers: {
@@ -161,8 +161,8 @@ export const BookCheckoutPage = () => {
     useEffect(() => {
         const fetchUserCurrentLoansCount = async () => {
             if (authState && authState.isAuthenticated) {
-                //const url = `http://localhost:8080/api/books/secure/currentloans/count`;
-                const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/secure/currentloans/count`;
+                const url = `http://localhost:8080/api/books/secure/currentloans/count`;
+                //const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/secure/currentloans/count`;
                 const requestOptions = {
                     method: 'GET',
                     headers: { 
@@ -188,8 +188,8 @@ export const BookCheckoutPage = () => {
     useEffect(() => {
         const fetchUserCheckedOutBook = async () => {
             if (authState && authState.isAuthenticated) {
-                //const url = `http://localhost:8080/api/books/secure/ischeckedout/byuser/?bookId=${bookId}`;
-                const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/secure/ischeckedout/byuser/?bookId=${bookId}`;
+                const url = `http://localhost:8080/api/books/secure/ischeckedout/byuser/?bookId=${bookId}`;
+                //const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/secure/ischeckedout/byuser/?bookId=${bookId}`;
                 const requestOptions = {
                     method: 'GET',
                     headers: {
@@ -229,8 +229,8 @@ export const BookCheckoutPage = () => {
     }
 
     async function checkoutBook() {
-        //const url = `http://localhost:8080/api/books/secure/checkout/?bookId=${book?.id}`;
-        const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/secure/checkout/?bookId=${book?.id}`;
+        const url = `http://localhost:8080/api/books/secure/checkout/?bookId=${book?.id}`;
+        //const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/books/secure/checkout/?bookId=${book?.id}`;
         const requestOptions = {
             method: 'PUT',
             headers: {
@@ -253,8 +253,8 @@ export const BookCheckoutPage = () => {
         }
 
         const reviewRequestModel = new ReviewRequestModel(starInput, bookId, reviewDescription);
-       // const url = `http://localhost:8080/api/reviews/secure`;
-       const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/reviews/secure`;
+       const url = `http://localhost:8080/api/reviews/secure`;
+      // const url = `http://librarymk.us-east-2.elasticbeanstalk.com/api/reviews/secure`;
         const requestOptions = {
             method: 'POST',
             headers: {

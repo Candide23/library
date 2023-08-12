@@ -23,7 +23,9 @@ configuring CORS mapping to allow requests from a specified origin.The
 @Configuration
 public class DataRestConfig implements RepositoryRestConfigurer {
 
-    private String theAllowedOrigins = "http://librarymk.s3-website.us-east-2.amazonaws.com";
+    //private String theAllowedOrigins = "http://librarymk.s3-website.us-east-2.amazonaws.com";
+    private String theAllowedOrigins = "http://localhost:3000";
+
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config,

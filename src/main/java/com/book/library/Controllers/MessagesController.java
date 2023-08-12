@@ -8,7 +8,8 @@ import com.book.library.Utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://librarymk.s3-website.us-east-2.amazonaws.com")
+//@CrossOrigin("http://librarymk.s3-website.us-east-2.amazonaws.com")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/api/messages")
 public class MessagesController {
